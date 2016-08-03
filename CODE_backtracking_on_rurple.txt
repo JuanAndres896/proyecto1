@@ -1,0 +1,29 @@
+#Integrantes: Chritian Morales(15015) José Luis Méndez(15024) y Juan García (15046)
+#02/08/2016
+#El objetivo de este programa es desplazar al robot por el laberinto hasta su salida
+#utilizando el algoritmo "Backtrackig"
+
+#turning three times to the left is equivalent to turning to right
+def turn_right():
+    repeat(turn_left, 3)
+#moving to a clear way
+def find_path():
+    while not front_is_clear():
+        turn_left()
+    move()
+#
+def follow_right_wall():
+    if right_is_clear(): 
+        turn_right()
+        move()
+    elif front_is_clear(): 
+        move()
+    else: 
+        turn_left()
+#changing name
+obstacle = next_to_a_beeper
+#running algorithm 
+find_path()
+while not obstacle(): 
+    follow_right_wall()
+turn_off()
